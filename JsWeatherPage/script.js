@@ -18,9 +18,11 @@ let weather = {
   },
   displayWeather: function (data) {
     const { name } = data;
+    console.log(data);
     const { icon, description } = data.weather[0];
     const { temp, humidity } = data.main;
     const { speed } = data.wind;
+    //Insert info
     document.querySelector(".city").innerText = "Weather in " + name;
     document.querySelector(".icon").src =
       "https://openweathermap.org/img/wn/" + icon + ".png";
@@ -31,10 +33,8 @@ let weather = {
     document.querySelector(".wind").innerText =
       "Wind speed: " + speed + " km/h";
     document.querySelector(".weather").classList.remove("loading");
-    console.log(temp,description);
-
-    console.log(data.weather[0].description);
     PrintBg(data.weather[0].description);
+    console.log();
     
    /*
    */
@@ -58,7 +58,7 @@ document
 
 weather.fetchWeather("Chisinau");
 
-//Test Swap BG but it's work Good :)
+//Test Swap BG , it's work Good :)
 var arrayBg = [" url('./assets/./image/Light\ rain.jpg')",
 " url('./assets/./image/Broken\ clouds.jpg')",
 " url('./assets/./image/Moderate\ rain.jpg')",
@@ -67,6 +67,8 @@ var arrayBg = [" url('./assets/./image/Light\ rain.jpg')",
 " url('./assets/./image/Scattered\ clouds.jpg')",
 " url('./assets/./image/Few\ clouds.jpg')",
 " url('./assets/./image/Clear\ sky.jpg')",
+" url('./assets/./image/Sunrise.jpg')",
+" url('./assets/./image/Sunset.jpg')",
 ];
 
 var posession = [
@@ -77,20 +79,19 @@ var posession = [
   "heavy intensity rain",
   "scattered clouds",
   "few clouds",
-  "clear sky"
+  "clear sky",
+  "sunrise",
+  "sunset"
 ];
 function PrintBg(temp)
 {
 
   for(let i=0 ; i<arrayBg.length; i++)
   {
-
   if(temp == posession[i])
   {
     document.body.style.backgroundImage = arrayBg[i];
   }
-
-console.log(temp)
 }
-console.log("problem")
+
 }
